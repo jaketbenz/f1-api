@@ -1,0 +1,117 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body{
+  display: flex;
+  /* height: 100%; */
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  /* height: 80%; */
+  width: 90%;
+  margin-top: 5rem;
+  border: 1px solid red;
+}
+.year-selection{
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+#year{
+  height: 3rem;
+  width: 10rem;
+  font-size: 2rem;
+  text-align: center;
+}
+#race{
+  height: 3rem;
+  width: 20rem;
+  font-size: 2rem;
+  text-align: center;
+}
+.title-bar,
+.results-field{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-direction: row;
+  /* border: 1px solid green; */
+}
+.title-bar h1{
+  height: 5rem;
+  width: 15%;
+  margin: 1rem;
+
+  background-color: #e10600;
+  color: white;
+  /* border: 1px solid yellow; */
+  border-radius: 1rem;
+
+  font-size: 2rem;
+  line-height: 5rem;
+  text-align: center;
+}
+.race-name,
+.pole-name,
+.driver-name,
+.constructor-name,
+.fastest-lap-name,
+.driver-standings,
+.driver-standings-points,
+.constructor-standings,
+.constructor-standings-points{
+  width: 15%;
+  margin: 0 auto;
+}
+.race-name div,
+.pole-name div,
+.driver-name div,
+.constructor-name div,
+.fastest-lap-name div,
+.driver-standings div,
+.driver-standings-points div,
+.constructor-standings div,
+.constructor-standings-points div{
+  height: 3rem;
+  width: 90%;
+  justify-content: center;
+  justify-self: center;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
+  margin: 1rem auto;
+  padding: 0.5rem 0rem;
+
+  background-color: black;
+  color: white;
+  /* border: 1px solid yellow; */
+  border-radius: .5rem;
+
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
