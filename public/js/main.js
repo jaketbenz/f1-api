@@ -15,7 +15,7 @@ function loadSeason(e) {
 		// 	return year;
 		// }
 
-		fetch(`http://ergast.com/api/f1/${year}/results/1.json`)
+		fetch(`https://ergast.com/api/f1/${year}/results/1.json`)
 			.then((res) => res.json()) // parse response as JSON
 			.then((data) => {
 				console.log(data);
@@ -65,7 +65,7 @@ function loadSeason(e) {
 	getSeason();
 
 	function getFastestLap() {
-		fetch(`http://ergast.com/api/f1/${year}/fastest/1/results.json`)
+		fetch(`https://ergast.com/api/f1/${year}/fastest/1/results.json`)
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(data)
@@ -88,7 +88,7 @@ function loadSeason(e) {
 	getFastestLap();
 
 	function getDriverStandings() {
-		fetch(`http://ergast.com/api/f1/${year}/driverStandings.json`)
+		fetch(`https://ergast.com/api/f1/${year}/driverStandings.json`)
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(data);
@@ -128,7 +128,7 @@ function loadSeason(e) {
 	getDriverStandings();
 
 	function getConstructorStandings() {
-		fetch(`http://ergast.com/api/f1/${year}/constructorStandings.json`)
+		fetch(`https://ergast.com/api/f1/${year}/constructorStandings.json`)
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(data);
