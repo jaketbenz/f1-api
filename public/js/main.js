@@ -1,7 +1,10 @@
 year = document.getElementById("year").value;
 console.log(year);
-let selection = document.getElementById("year");
-selection.addEventListener("change", loadSeason);
+let yearSelection = document.getElementById("year");
+yearSelection.addEventListener("change", loadSeason);
+
+let raceSelection = document.getElementById("race");
+raceSelection.addEventListener("change", loadRace);
 
 function loadSeason(e) {
 	let years = e.target.value;
@@ -35,6 +38,7 @@ function loadSeason(e) {
 					const raceDropDownDiv = document.createElement("option");
 					raceDropDownDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
 					raceDropDownDiv.classList.add("raceOption");
+					raceDropDownDiv.setAttribute('value', [i+1]);
 					raceDropDown.appendChild(raceDropDownDiv);
 
 					//shows winning driver
@@ -164,4 +168,23 @@ function loadSeason(e) {
 			});
 	}
 	getConstructorStandings();
+}
+function loadRace(e) {
+	let raceID = parseInt(e.target.value);
+	console.log(raceID);
+
+	fetch(`https://ergast.com/api/f1/${year}/${raceID}/results.json`)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			for (
+				i = 0;
+				i < data.MRData.RaceTable.Races[0].Results.length;
+				i++
+			) {
+				console.log(
+					data.MRData.RaceTable.Races[0].Results[i].Driver.familyName
+				);
+			}
+		});
 }
