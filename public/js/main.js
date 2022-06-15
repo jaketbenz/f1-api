@@ -5,21 +5,22 @@ selection.addEventListener("change", loadSeason);
 
 function loadSeason(e) {
 	let years = e.target.value;
-	// console.log(years);
 
 	function getSeason() {
 		year = document.getElementById("year").value;
-		// console.log(year);
-		// function getYear() {
-		// 	year = document.getElementById("year").value;
-		// 	return year;
-		// }
 
 		fetch(`https://ergast.com/api/f1/${year}/results/1.json`)
 			.then((res) => res.json()) // parse response as JSON
 			.then((data) => {
 				console.log(data);
-				// document.querySelector(".raceOption").innerHTML = '';
+
+				// shows all races for the season in dropdown for more detailed race stats
+				const raceDropDownOptions =
+					document.querySelectorAll(".raceOption");
+				raceDropDownOptions.forEach((option) => {
+					option.remove();
+				});
+
 				document.querySelector(".race-name").innerHTML = "";
 				document.querySelector(".driver-name").innerHTML = "";
 				document.querySelector(".constructor-name").innerHTML = "";
@@ -30,12 +31,6 @@ function loadSeason(e) {
 					raceNameDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
 					raceName.appendChild(raceNameDiv);
 
-					//shows all races for the season in dropdown for more detailed race stats
-					// const raceDropDownOptions =
-					// 	document.querySelectorAll(".race option");
-					// raceDropDownOptions.forEach((option) => {
-					// 	option.remove();
-					// });
 					const raceDropDown = document.querySelector(".race");
 					const raceDropDownDiv = document.createElement("option");
 					raceDropDownDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
