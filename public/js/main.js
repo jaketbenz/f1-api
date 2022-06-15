@@ -19,7 +19,7 @@ function loadSeason(e) {
 			.then((res) => res.json()) // parse response as JSON
 			.then((data) => {
 				console.log(data);
-				document.querySelectorAll("raceOption").innerHTML = "";
+				// document.querySelector(".raceOption").innerHTML = '';
 				document.querySelector(".race-name").innerHTML = "";
 				document.querySelector(".driver-name").innerHTML = "";
 				document.querySelector(".constructor-name").innerHTML = "";
@@ -31,6 +31,11 @@ function loadSeason(e) {
 					raceName.appendChild(raceNameDiv);
 
 					//shows all races for the season in dropdown for more detailed race stats
+					// const raceDropDownOptions =
+					// 	document.querySelectorAll(".race option");
+					// raceDropDownOptions.forEach((option) => {
+					// 	option.remove();
+					// });
 					const raceDropDown = document.querySelector(".race");
 					const raceDropDownDiv = document.createElement("option");
 					raceDropDownDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
