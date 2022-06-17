@@ -12,6 +12,8 @@ modal.style.display = "none";
 function loadSeason(e) {
 	let years = e.target.value;
 
+	modal.style.display = 'none';
+
 	function getSeason() {
 		year = document.getElementById("year").value;
 
@@ -202,9 +204,6 @@ function getRace(e) {
 				i < data.MRData.RaceTable.Races[0].Results.length;
 				i++
 			) {
-				// console.log(
-				// 	data.MRData.RaceTable.Races[0].Results[i].Driver.familyName
-				// );
 				//shows driver race standing
 				const driverRaceStandings = document.querySelector(
 					".driver-race-standings"
