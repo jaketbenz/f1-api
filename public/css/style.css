@@ -3,86 +3,88 @@
 /*******************************************/
 
 /* Box Model Hack */
-*{
-  box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-html{
-  font-size: 62.5%;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
 
-  background-image: url('/img/f1-background.jpg');
-  /* background-position: center; */
-  background-size:auto;
-  background-repeat: no-repeat;
+	background-image: url("/img/f1-background.jpg");
+	/* background-position: center; */
+	background-size: auto;
+	background-repeat: no-repeat;
 }
-*, *::before, *::after{
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
-body{
-  display: flex;
-  /* height: 100%; */
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
+body {
+	display: flex;
+	/* height: 100%; */
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
 }
-.container{
-  /* height: 80%; */
-  width: 90%;
-  height: 90%;
-  margin-top: 5rem;
-  /* border: 1px solid red; */
-  border-radius: 1rem;
-  background-color: white;
+.container {
+	/* height: 80%; */
+	width: 90%;
+	height: 90%;
+	margin-top: 5rem;
+	/* border: 1px solid red; */
+	border-radius: 1rem;
+	background-color: white;
 }
-.year-selection{
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+.year-selection {
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
 
-  text-align: center;
+	text-align: center;
 }
-#year{
-  height: 3rem;
-  width: 10rem;
-  margin: 0 2rem;
-  font-size: 2rem;
-  text-align: center;
+#year {
+	height: 3rem;
+	width: 10rem;
+	margin: 0 2rem;
+	font-size: 2rem;
+	text-align: center;
 }
-#race{
-  height: 3rem;
-  width: 40rem;
-  margin: 0 2rem;
-  font-size: 2rem;
-  text-align: center;
+#race {
+	height: 3rem;
+	width: 40rem;
+	margin: 0 2rem;
+	font-size: 2rem;
+	text-align: center;
 }
 .title-bar,
-.results-field{
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  flex-direction: row;
-  /* border: 1px solid green; */
+.results-field {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	flex-direction: row;
+	/* border: 1px solid green; */
 }
-.title-bar h1{
-  height: 5rem;
-  width: 15%;
-  margin: 1rem;
+.title-bar h1 {
+	height: 5rem;
+	width: 15%;
+	margin: 1rem;
 
-  background-color: #e10600;
-  color: white;
-  /* border: 1px solid yellow; */
-  border-radius: 1rem;
+	background-color: #e10600;
+	color: white;
+	/* border: 1px solid yellow; */
+	border-radius: 1rem;
 
-  font-size: 2rem;
-  line-height: 5rem;
-  text-align: center;
+	font-size: 2rem;
+	line-height: 5rem;
+	text-align: center;
 }
 .race-name,
 .pole-name,
@@ -92,9 +94,9 @@ body{
 .driver-standings,
 .driver-standings-points,
 .constructor-standings,
-.constructor-standings-points{
-  width: 15%;
-  margin: 0 auto;
+.constructor-standings-points {
+	width: 15%;
+	margin: 0 auto;
 }
 .race-name div,
 .pole-name div,
@@ -104,26 +106,120 @@ body{
 .driver-standings div,
 .driver-standings-points div,
 .constructor-standings div,
-.constructor-standings-points div{
-  height: 3rem;
-  width: 90%;
-  justify-content: center;
-  justify-self: center;
-  /* margin-top: 1rem;
+.constructor-standings-points div {
+	height: 3rem;
+	width: 90%;
+	justify-content: center;
+	justify-self: center;
+	/* margin-top: 1rem;
   margin-bottom: 1rem; */
-  margin: 1rem auto;
-  padding: 0.5rem 0rem;
+	margin: 1rem auto;
+	padding: 0.5rem 0rem;
 
-  background-color: black;
-  color: white;
-  /* border: 1px solid yellow; */
-  border-radius: .5rem;
+	background-color: black;
+	color: white;
+	/* border: 1px solid yellow; */
+	border-radius: 0.5rem;
 
-  font-size: 1.2rem;
-  line-height: 2rem;
-  text-align: center;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	text-align: center;
 }
+.modal {
+	/* height: 100%; */
+	width: 100%;
+  margin: none;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: white;
+}
+.modal-title-bar {
+	height: 10%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+  align-items: center;
+}
+.modal-title-bar h1 {
+  height: 5rem; 
+	width: 30%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	background-color: #e10600;
+	border-radius: 1rem;
+	color: white;
+	font-size: 2rem;
+	line-height: 5rem;
+	text-align: center;
+}
+.results-container {
+  height: 90%;
+	width: 100%;
+	display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.driver-race-results,
+.constructor-race-results,
+.circuit-image {
+	height: 80%;
+	width: 30%;
+	/* margin: auto; */
+}
+.driver-race-results{
+  display: flex;
+  /* flex-direction: column; */
+  /* columns: 2; */
+  flex-wrap: wrap;
+}
+.driver-race-standings{
+  /* display: flex; */
+  /* flex-direction: row; */
+  width: 60%;
+}
+.driver-race-points{
+  /* display: flex; */
+  /* flex-direction: row; */
+  width: 30%;
+}
+.driver-race-standings div {
+	height: 5%;
+	/* width: 60%; */
+	display: flex;
+	flex-direction: row;
+	margin: auto 1rem .5rem;
+	justify-content: center;
 
+	border: 1px solid black;
+	border-radius: 0.5rem;
+
+	font-size: 2rem;
+	line-height: 3rem;
+	text-align: center;
+}
+.driver-race-points div{
+  height: 5%;
+  /* width: 40%; */
+
+  display: flex;
+	flex-direction: row;
+  margin: auto 1rem .5rem;
+	justify-content: center;
+
+	border: 1px solid black;
+	border-radius: 0.5rem;
+
+	font-size: 2rem;
+	line-height: 3rem;
+	text-align: center;
+}
+.circuit-image img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
