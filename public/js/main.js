@@ -234,7 +234,17 @@ function getRace(e) {
 				const driverRaceTime =
 					document.querySelector(".driver-race-time");
 				const driverRaceTimeDiv = document.createElement("div");
-				driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].Time.time}`;
+				// driverRaceTimeDiv.innerHTML =
+				// 	data.MRData.RaceTable.Races[0].Results[i].Time.time;
+
+				if(driverRaceTimeDiv.innerHTML =
+					data.MRData.RaceTable.Races[0].Results[i].hasOwnProperty('Time')){
+					driverRaceTimeDiv.innerHTML =
+					data.MRData.RaceTable.Races[0].Results[i].Time.time;
+				}
+				else{
+					driverRaceTimeDiv.innerHTML = 'DNF'
+				}
 				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
 		});

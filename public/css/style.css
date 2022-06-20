@@ -156,21 +156,25 @@ body {
 	width: 90%;
 	margin: auto;
 }
+.circuit-image{
+	text-align: center;
+}
 .driver-race-results {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 .driver-race-standings {
-	width: 30%;
+	width: 25%;
 }
 .driver-race-points {
-	width: 20%;
+	width: 15%;
 }
 .driver-race-constructor {
-	width: 30%;
+	width: 25%;
 }
 .driver-race-time{
-	width: 20%;
+	width: 15%;
 }
 .driver-race-standings div {
 	height: 3rem;
@@ -223,9 +227,12 @@ body {
 	text-align: center;
 }
 .circuit-image img {
-	height: 100%;
-	width: 100%;
+	height: 90%;
+	width: 90%;
 	object-fit: contain;
+	justify-content: center;
+	justify-items: center;
+	justify-self: center;
 }
 /******************************************
 /* ADDITIONAL STYLES
