@@ -68,28 +68,28 @@ function loadSeason(e) {
 	}
 	getSeason();
 
-	function getFastestLap() {
-		fetch(`https://ergast.com/api/f1/${year}/fastest/1/results.json`)
-			.then((res) => res.json())
-			.then((data) => {
-				// console.log(data)
-				document.querySelector(".fastest-lap-name").innerHTML = "";
-				for (let i = 0; i < data.MRData.RaceTable.Races.length; i++) {
-					//shows fastest lap driver
-					const fastestLapName =
-						document.querySelector(".fastest-lap-name");
-					const fastestLapNameDiv = document.createElement("div");
-					fastestLapNameDiv.innerHTML =
-						`${data.MRData.RaceTable.Races[i].Results[0].Driver.givenName} ` +
-						`${data.MRData.RaceTable.Races[i].Results[0].Driver.familyName}`;
-					fastestLapName.appendChild(fastestLapNameDiv);
-				}
-			})
-			.catch((err) => {
-				console.log(`error ${err}`);
-			});
-	}
-	getFastestLap();
+	// function getFastestLap() {
+	// 	fetch(`https://ergast.com/api/f1/${year}/fastest/1/results.json`)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			// console.log(data)
+	// 			document.querySelector(".fastest-lap-name").innerHTML = "";
+	// 			for (let i = 0; i < data.MRData.RaceTable.Races.length; i++) {
+	// 				//shows fastest lap driver
+	// 				const fastestLapName =
+	// 					document.querySelector(".fastest-lap-name");
+	// 				const fastestLapNameDiv = document.createElement("div");
+	// 				fastestLapNameDiv.innerHTML =
+	// 					`${data.MRData.RaceTable.Races[i].Results[0].Driver.givenName} ` +
+	// 					`${data.MRData.RaceTable.Races[i].Results[0].Driver.familyName}`;
+	// 				fastestLapName.appendChild(fastestLapNameDiv);
+	// 			}
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(`error ${err}`);
+	// 		});
+	// }
+	// getFastestLap();
 
 	function getDriverStandings() {
 		fetch(`https://ergast.com/api/f1/${year}/driverStandings.json`)
@@ -237,18 +237,23 @@ function getRace(e) {
 				// driverRaceTimeDiv.innerHTML =
 				// 	data.MRData.RaceTable.Races[0].Results[i].Time.time;
 
-				if(driverRaceTimeDiv.innerHTML =
-					data.MRData.RaceTable.Races[0].Results[i].hasOwnProperty('Time')){
+				if (
+					(driverRaceTimeDiv.innerHTML =
+						data.MRData.RaceTable.Races[0].Results[
+							i
+						].hasOwnProperty("Time"))
+				) {
 					driverRaceTimeDiv.innerHTML =
-					data.MRData.RaceTable.Races[0].Results[i].Time.time;
-				}
-				else if(data.MRData.RaceTable.Races[0].Results[i].status.includes('Lap')){
+						data.MRData.RaceTable.Races[0].Results[i].Time.time;
+				} else if (
+					data.MRData.RaceTable.Races[0].Results[i].status.includes(
+						"Lap"
+					)
+				) {
 					// driverRaceTimeDiv.innerHTML = 'DNF'
 					driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].status}`;
-				}
-				else{
+				} else {
 					driverRaceTimeDiv.innerHTML = `DNF: ${data.MRData.RaceTable.Races[0].Results[i].status}`;
-
 				}
 				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
