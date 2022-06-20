@@ -12,7 +12,7 @@ modal.style.display = "none";
 function loadSeason(e) {
 	let years = e.target.value;
 
-	modal.style.display = 'none';
+	modal.style.display = "none";
 
 	function getSeason() {
 		year = document.getElementById("year").value;
@@ -190,14 +190,12 @@ function getRace(e) {
 			console.log(data);
 			document.querySelector(".driver-race-standings").innerHTML = "";
 			document.querySelector(".driver-race-points").innerHTML = "";
-			document.querySelector(".constructor-race-results").innerHTML = "";
+			// document.querySelector(".constructor-race-results").innerHTML = "";
 
 			//show circuit layout
 			console.log(data.MRData.RaceTable.Races[0].Circuit.circuitId);
 			const circuit = document.querySelector(".circuit-layout");
-			const circuitDiv = document.createElement("img");
 			circuit.src = `/img/${data.MRData.RaceTable.Races[0].Circuit.circuitId}.png`;
-			// circuit.appendChild(circuitDiv);
 
 			for (
 				i = 0;
@@ -219,13 +217,22 @@ function getRace(e) {
 				);
 				const driverRacePointsDiv = document.createElement("div");
 				driverRacePointsDiv.innerHTML =
-					data.MRData.RaceTable.Races[0].Results[i].points;
+					`${data.MRData.RaceTable.Races[0].Results[i].points} PTS`;
 				driverRacePoints.appendChild(driverRacePointsDiv);
+
+				//shows driver constructor
+				const driverConstructor = document.querySelector(
+					".driver-race-constructor"
+				);
+				const driverConstructorDiv = document.createElement("div");
+				driverConstructorDiv.innerHTML =
+					data.MRData.RaceTable.Races[0].Results[i].Constructor.name;
+				driverConstructor.appendChild(driverConstructorDiv);
 			}
 		});
 }
-// window.onclick = function(e){
-// 	if(e.target == modal){
-// 		modal.style.display = 'none';
-// 	}
-// }
+window.onclick = function (e) {
+	if (e.target == modal) {
+		modal.style.display = "none";
+	}
+};
