@@ -243,14 +243,15 @@ function getRace(e) {
 					data.MRData.RaceTable.Races[0].Results[i].Time.time;
 				}
 				else{
-					driverRaceTimeDiv.innerHTML = 'DNF'
+					// driverRaceTimeDiv.innerHTML = 'DNF'
+					driverRaceTimeDiv.innerHTML = `DNF: ${data.MRData.RaceTable.Races[0].Results[i].status}`;
 				}
 				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
 		});
 }
-window.onclick = function (e) {
-	if (e.target == modal) {
-		modal.style.display = "none";
-	}
-};
+// window.onclick = function (e) {
+// 	if (e.target == modal) {
+// 		modal.style.display = "none";
+// 	}
+// };
