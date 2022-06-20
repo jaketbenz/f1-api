@@ -242,9 +242,13 @@ function getRace(e) {
 					driverRaceTimeDiv.innerHTML =
 					data.MRData.RaceTable.Races[0].Results[i].Time.time;
 				}
-				else{
+				else if(data.MRData.RaceTable.Races[0].Results[i].status.includes('Lap')){
 					// driverRaceTimeDiv.innerHTML = 'DNF'
+					driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].status}`;
+				}
+				else{
 					driverRaceTimeDiv.innerHTML = `DNF: ${data.MRData.RaceTable.Races[0].Results[i].status}`;
+
 				}
 				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
