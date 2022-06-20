@@ -134,7 +134,7 @@ body {
 	height: 5rem;
 	width: 45%;
 	display: flex;
-  margin: 1rem auto;
+	margin: 1rem auto;
 	text-align: center;
 	justify-content: center;
 	background-color: #e10600;
@@ -147,25 +147,30 @@ body {
 .results-container {
 	width: 100%;
 	display: flex;
+	/* margin: auto; */
 	flex-direction: row;
-	justify-content: space-evenly;
+	/* justify-content: space-evenly; */
 }
 .driver-race-results,
 .circuit-image {
-	width: 50%;
+	width: 90%;
+	margin: auto;
 }
 .driver-race-results {
 	display: flex;
 	flex-wrap: wrap;
 }
 .driver-race-standings {
-	width: 40%;
+	width: 30%;
 }
 .driver-race-points {
 	width: 20%;
 }
-.driver-race-constructor{
-  width: 40%;
+.driver-race-constructor {
+	width: 30%;
+}
+.driver-race-time{
+	width: 20%;
 }
 .driver-race-standings div {
 	height: 3rem;
@@ -177,6 +182,18 @@ body {
 	border: 1px solid black;
 	border-radius: 0.5rem;
 
+	font-size: 2rem;
+	line-height: 3rem;
+	text-align: center;
+}
+.driver-race-constructor div {
+	height: 3rem;
+	display: flex;
+	flex-direction: row;
+	margin: 1rem 0.25rem;
+	justify-content: center;
+	border: 1px solid black;
+	border-radius: 0.5rem;
 	font-size: 2rem;
 	line-height: 3rem;
 	text-align: center;
@@ -193,9 +210,9 @@ body {
 	line-height: 3rem;
 	text-align: center;
 }
-.driver-race-constructor div{
-  height: 3rem;
-  display: flex;
+.driver-race-time div{
+	height: 3rem;
+	display: flex;
 	flex-direction: row;
 	margin: 1rem 0.25rem;
 	justify-content: center;

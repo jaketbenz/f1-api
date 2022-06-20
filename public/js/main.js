@@ -190,6 +190,8 @@ function getRace(e) {
 			console.log(data);
 			document.querySelector(".driver-race-standings").innerHTML = "";
 			document.querySelector(".driver-race-points").innerHTML = "";
+			document.querySelector(".driver-race-constructor").innerHTML = "";
+			document.querySelector(".driver-race-time").innerHTML = "";
 			// document.querySelector(".constructor-race-results").innerHTML = "";
 
 			//show circuit layout
@@ -211,15 +213,6 @@ function getRace(e) {
 					`${data.MRData.RaceTable.Races[0].Results[i].Driver.givenName} ` +
 					`${data.MRData.RaceTable.Races[0].Results[i].Driver.familyName}`;
 				driverRaceStandings.appendChild(driverRaceStandingsDiv);
-				//shows driver race points
-				const driverRacePoints = document.querySelector(
-					".driver-race-points"
-				);
-				const driverRacePointsDiv = document.createElement("div");
-				driverRacePointsDiv.innerHTML =
-					`${data.MRData.RaceTable.Races[0].Results[i].points} PTS`;
-				driverRacePoints.appendChild(driverRacePointsDiv);
-
 				//shows driver constructor
 				const driverConstructor = document.querySelector(
 					".driver-race-constructor"
@@ -228,6 +221,21 @@ function getRace(e) {
 				driverConstructorDiv.innerHTML =
 					data.MRData.RaceTable.Races[0].Results[i].Constructor.name;
 				driverConstructor.appendChild(driverConstructorDiv);
+
+				//shows driver race points
+				const driverRacePoints = document.querySelector(
+					".driver-race-points"
+				);
+				const driverRacePointsDiv = document.createElement("div");
+				driverRacePointsDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].points} PTS`;
+				driverRacePoints.appendChild(driverRacePointsDiv);
+
+				//show driver time
+				const driverRaceTime =
+					document.querySelector(".driver-race-time");
+				const driverRaceTimeDiv = document.createElement("div");
+				driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].Time.time}`;
+				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
 		});
 }
