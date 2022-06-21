@@ -181,8 +181,8 @@ function getRace(e) {
 
 	modal.style.display = "flex";
 
-	document.querySelector(".title-bar").innerHTML = "";
-	document.querySelector(".results-field").innerHTML = "";
+	// document.querySelector(".title-bar").innerHTML = "";
+	// document.querySelector(".results-field").innerHTML = "";
 
 	fetch(`https://ergast.com/api/f1/${year}/${raceID}/results.json`)
 		.then((res) => res.json())
