@@ -32,9 +32,12 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-.container {
+.container,
+.modal {
 	height: 80%;
 	width: 90%;
+}
+.container {
 	margin-top: 5rem;
 	border-radius: 1rem;
 	background-color: white;
@@ -43,7 +46,6 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 1rem 0;
-
 	text-align: center;
 }
 #year {
@@ -117,8 +119,6 @@ body {
 	text-align: center;
 }
 .modal {
-	height: 80%;
-	width: 90%;
 	position: absolute;
 	z-index: 1;
 	top: 10rem;
@@ -126,11 +126,11 @@ body {
 	flex-wrap: wrap;
 	border-radius: 1rem;
 	background-color: white;
-	align-items:flex-start;
+	align-items: flex-start;
 	align-content: flex-start;
 }
 .modal-title-bar {
-	height: 10%;
+	height: 5%;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -154,50 +154,32 @@ body {
 .results-container {
 	width: 100%;
 	display: flex;
-	/* margin: auto; */
 	flex-direction: row;
-	/* justify-content: space-evenly; */
 }
 .driver-race-results,
 .circuit-image {
 	width: 90%;
 	margin: auto;
 }
-.circuit-image{
-	text-align: center;
-}
 .driver-race-results {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
-.driver-race-standings {
+.driver-race-standings,
+.driver-race-constructor {
 	width: 20%;
 }
 .driver-race-points {
 	width: 10%;
 }
-.driver-race-constructor {
-	width: 20%;
-}
-.driver-race-time{
+.driver-race-time {
 	width: 25%;
 }
-.driver-race-standings div {
-	height: 3rem;
-	display: flex;
-	flex-direction: row;
-	margin: 1rem 0.25rem;
-	justify-content: center;
-
-	border: 1px solid black;
-	border-radius: 0.5rem;
-
-	font-size: 2rem;
-	line-height: 3rem;
-	text-align: center;
-}
-.driver-race-constructor div {
+.driver-race-standings div,
+.driver-race-constructor div,
+.driver-race-points div,
+.driver-race-time div {
 	height: 3rem;
 	display: flex;
 	flex-direction: row;
@@ -209,28 +191,7 @@ body {
 	line-height: 3rem;
 	text-align: center;
 }
-.driver-race-points div {
-	height: 3rem;
-	display: flex;
-	flex-direction: row;
-	margin: 1rem 0.25rem;
-	justify-content: center;
-	border: 1px solid black;
-	border-radius: 0.5rem;
-	font-size: 2rem;
-	line-height: 3rem;
-	text-align: center;
-}
-.driver-race-time div{
-	height: 3rem;
-	display: flex;
-	flex-direction: row;
-	margin: 1rem 0.25rem;
-	justify-content: center;
-	border: 1px solid black;
-	border-radius: 0.5rem;
-	font-size: 2rem;
-	line-height: 3rem;
+.circuit-image {
 	text-align: center;
 }
 .circuit-image img {
@@ -241,7 +202,7 @@ body {
 	justify-items: center;
 	justify-self: center;
 }
-.close-modal{
+.close-modal {
 	height: 2.5%;
 	width: 10%;
 	margin: 2rem auto;

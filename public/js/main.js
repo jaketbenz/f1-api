@@ -28,6 +28,8 @@ function loadSeason(e) {
 					option.remove();
 				});
 
+				const raceData = data.MRData.RaceTable.Races;
+
 				document.querySelector(".race-name").innerHTML = "";
 				document.querySelector(".driver-name").innerHTML = "";
 				document.querySelector(".constructor-name").innerHTML = "";
@@ -35,12 +37,12 @@ function loadSeason(e) {
 					//shows all races for the season
 					const raceName = document.querySelector(".race-name");
 					const raceNameDiv = document.createElement("div");
-					raceNameDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
+					raceNameDiv.innerHTML = `${raceData[i].raceName}`;
 					raceName.appendChild(raceNameDiv);
 
 					const raceDropDown = document.querySelector(".race");
 					const raceDropDownDiv = document.createElement("option");
-					raceDropDownDiv.innerHTML = `${data.MRData.RaceTable.Races[i].raceName}`;
+					raceDropDownDiv.innerHTML = `${raceData[i].raceName}`;
 					raceDropDownDiv.classList.add("raceOption");
 					raceDropDownDiv.setAttribute("value", [i + 1]);
 					raceDropDown.appendChild(raceDropDownDiv);
@@ -49,14 +51,13 @@ function loadSeason(e) {
 					const driverName = document.querySelector(".driver-name");
 					const driverNameDiv = document.createElement("div");
 					driverNameDiv.innerHTML =
-						`${data.MRData.RaceTable.Races[i].Results[0].Driver.givenName}` +
-						` ${data.MRData.RaceTable.Races[i].Results[0].Driver.familyName}`;
+						`${raceData[i].Results[0].Driver.givenName}` + ` ${raceData[i].Results[0].Driver.familyName}`;
 					driverName.appendChild(driverNameDiv);
 
 					//shows winning constructor
 					const constructorName = document.querySelector(".constructor-name");
 					const constructorNameDiv = document.createElement("div");
-					constructorNameDiv.innerHTML = `${data.MRData.RaceTable.Races[i].Results[0].Constructor.name}`;
+					constructorNameDiv.innerHTML = `${raceData[i].Results[0].Constructor.name}`;
 					constructorName.appendChild(constructorNameDiv);
 				}
 			})
@@ -96,19 +97,22 @@ function loadSeason(e) {
 				// console.log(data);
 				document.querySelector(".driver-standings").innerHTML = "";
 				document.querySelector(".driver-standings-points").innerHTML = "";
-				for (let i = 0; i < data.MRData.StandingsTable.StandingsLists[0].DriverStandings.length; i++) {
+
+				const driver = data.MRData.StandingsTable.StandingsLists[0];
+
+				for (let i = 0; i < driver.DriverStandings.length; i++) {
 					//shows driver standings for season
 					const driverStandingsName = document.querySelector(".driver-standings");
 					const driverStandingsNameDiv = document.createElement("div");
 					driverStandingsNameDiv.innerHTML =
-						`${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName} ` +
-						`${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName}`;
+						`${driver.DriverStandings[i].Driver.givenName} ` +
+						`${driver.DriverStandings[i].Driver.familyName}`;
 					driverStandingsName.appendChild(driverStandingsNameDiv);
 
 					//shows driver points for season
 					const pointsStanding = document.querySelector(".driver-standings-points");
 					const pointsStandingDiv = document.createElement("div");
-					pointsStandingDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points} `;
+					pointsStandingDiv.innerHTML = `${driver.DriverStandings[i].points} `;
 					pointsStanding.appendChild(pointsStandingDiv);
 				}
 			})
@@ -125,17 +129,20 @@ function loadSeason(e) {
 				// console.log(data);
 				document.querySelector(".constructor-standings").innerHTML = "";
 				document.querySelector(".constructor-standings-points").innerHTML = "";
-				for (let i = 0; i < data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.length; i++) {
+
+				const constructor = data.MRData.StandingsTable.StandingsLists[0];
+
+				for (let i = 0; i < constructor.ConstructorStandings.length; i++) {
 					//shows constructor standings
 					const constructorStanding = document.querySelector(".constructor-standings");
 					const constructorStandingDiv = document.createElement("div");
-					constructorStandingDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[i].Constructor.name}`;
+					constructorStandingDiv.innerHTML = `${constructor.ConstructorStandings[i].Constructor.name}`;
 					constructorStanding.appendChild(constructorStandingDiv);
 
 					//shows constructor points
 					const constructorStandingPoints = document.querySelector(".constructor-standings-points");
 					const constructorStandingPointsDiv = document.createElement("div");
-					constructorStandingPointsDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[i].points}`;
+					constructorStandingPointsDiv.innerHTML = `${constructor.ConstructorStandings[i].points}`;
 					constructorStandingPoints.appendChild(constructorStandingPointsDiv);
 				}
 			})
@@ -148,12 +155,8 @@ function loadSeason(e) {
 function getRace(e) {
 	let raceID = parseInt(e.target.value);
 	console.log(raceID);
-	// const modal = document.querySelector('.modal');
 
 	modal.style.display = "flex";
-
-	// document.querySelector(".title-bar").innerHTML = "";
-	// document.querySelector(".results-field").innerHTML = "";
 
 	fetch(`https://ergast.com/api/f1/${year}/${raceID}/results.json`)
 		.then((res) => res.json())
@@ -164,51 +167,48 @@ function getRace(e) {
 			document.querySelector(".driver-race-constructor").innerHTML = "";
 			document.querySelector(".driver-race-time").innerHTML = "";
 
+			const raceData = data.MRData.RaceTable.Races[0];
+			
 			//show circuit layout
-			console.log(data.MRData.RaceTable.Races[0].Circuit.circuitId);
+			// console.log(data.MRData.RaceTable.Races[0].Circuit.circuitId);
 			const circuit = document.querySelector(".circuit-layout");
-			circuit.src = `/img/${data.MRData.RaceTable.Races[0].Circuit.circuitId}.png`;
+			circuit.src = `/img/${raceData.Circuit.circuitId}.png`;
 
-			for (i = 0; i < data.MRData.RaceTable.Races[0].Results.length; i++) {
+			for (i = 0; i < raceData.Results.length; i++) {
 				//shows driver race standing
 				const driverRaceStandings = document.querySelector(".driver-race-standings");
 				const driverRaceStandingsDiv = document.createElement("div");
 				driverRaceStandingsDiv.innerHTML =
-					`${data.MRData.RaceTable.Races[0].Results[i].Driver.givenName} ` +
-					`${data.MRData.RaceTable.Races[0].Results[i].Driver.familyName}`;
+					`${raceData.Results[i].Driver.givenName} ` +
+					`${raceData.Results[i].Driver.familyName}`;
 				driverRaceStandings.appendChild(driverRaceStandingsDiv);
 				//shows driver constructor
 				const driverConstructor = document.querySelector(".driver-race-constructor");
 				const driverConstructorDiv = document.createElement("div");
-				driverConstructorDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].Constructor.name;
+				driverConstructorDiv.innerHTML = raceData.Results[i].Constructor.name;
 				driverConstructor.appendChild(driverConstructorDiv);
 
 				//shows driver race points
 				const driverRacePoints = document.querySelector(".driver-race-points");
 				const driverRacePointsDiv = document.createElement("div");
-				driverRacePointsDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].points} PTS`;
+				driverRacePointsDiv.innerHTML = `${raceData.Results[i].points} PTS`;
 				driverRacePoints.appendChild(driverRacePointsDiv);
 
 				//show driver time
 				const driverRaceTime = document.querySelector(".driver-race-time");
 				const driverRaceTimeDiv = document.createElement("div");
-				if ((driverRaceTimeDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].hasOwnProperty("Time"))) {
-					driverRaceTimeDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].Time.time;
-				} else if (data.MRData.RaceTable.Races[0].Results[i].status.includes("Lap")) {
+				if ((driverRaceTimeDiv.innerHTML = raceData.Results[i].hasOwnProperty("Time"))) {
+					driverRaceTimeDiv.innerHTML = raceData.Results[i].Time.time;
+				} else if (raceData.Results[i].status.includes("Lap")) {
 					// driverRaceTimeDiv.innerHTML = 'DNF'
-					driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].status}`;
+					driverRaceTimeDiv.innerHTML = `${raceData.Results[i].status}`;
 				} else {
-					driverRaceTimeDiv.innerHTML = `DNF: ${data.MRData.RaceTable.Races[0].Results[i].status}`;
+					driverRaceTimeDiv.innerHTML = `DNF: ${raceData.Results[i].status}`;
 				}
 				driverRaceTime.appendChild(driverRaceTimeDiv);
 			}
 		});
 }
-// window.onclick = function (e) {
-// 	if (e.target == modal) {
-// 		modal.style.display = "none";
-// 	}
-// };
 const button = document.querySelector(".close-modal");
 button.onclick = function () {
 	modal.style.display = "none";
