@@ -23,8 +23,7 @@ function loadSeason(e) {
 				console.log(data);
 
 				// shows all races for the season in dropdown for more detailed race stats
-				const raceDropDownOptions =
-					document.querySelectorAll(".raceOption");
+				const raceDropDownOptions = document.querySelectorAll(".raceOption");
 				raceDropDownOptions.forEach((option) => {
 					option.remove();
 				});
@@ -55,8 +54,7 @@ function loadSeason(e) {
 					driverName.appendChild(driverNameDiv);
 
 					//shows winning constructor
-					const constructorName =
-						document.querySelector(".constructor-name");
+					const constructorName = document.querySelector(".constructor-name");
 					const constructorNameDiv = document.createElement("div");
 					constructorNameDiv.innerHTML = `${data.MRData.RaceTable.Races[i].Results[0].Constructor.name}`;
 					constructorName.appendChild(constructorNameDiv);
@@ -97,29 +95,18 @@ function loadSeason(e) {
 			.then((data) => {
 				// console.log(data);
 				document.querySelector(".driver-standings").innerHTML = "";
-				document.querySelector(".driver-standings-points").innerHTML =
-					"";
-				for (
-					let i = 0;
-					i <
-					data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-						.length;
-					i++
-				) {
+				document.querySelector(".driver-standings-points").innerHTML = "";
+				for (let i = 0; i < data.MRData.StandingsTable.StandingsLists[0].DriverStandings.length; i++) {
 					//shows driver standings for season
-					const driverStandingsName =
-						document.querySelector(".driver-standings");
-					const driverStandingsNameDiv =
-						document.createElement("div");
+					const driverStandingsName = document.querySelector(".driver-standings");
+					const driverStandingsNameDiv = document.createElement("div");
 					driverStandingsNameDiv.innerHTML =
 						`${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName} ` +
 						`${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName}`;
 					driverStandingsName.appendChild(driverStandingsNameDiv);
 
 					//shows driver points for season
-					const pointsStanding = document.querySelector(
-						".driver-standings-points"
-					);
+					const pointsStanding = document.querySelector(".driver-standings-points");
 					const pointsStandingDiv = document.createElement("div");
 					pointsStandingDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points} `;
 					pointsStanding.appendChild(pointsStandingDiv);
@@ -137,35 +124,19 @@ function loadSeason(e) {
 			.then((data) => {
 				// console.log(data);
 				document.querySelector(".constructor-standings").innerHTML = "";
-				document.querySelector(
-					".constructor-standings-points"
-				).innerHTML = "";
-				for (
-					let i = 0;
-					i <
-					data.MRData.StandingsTable.StandingsLists[0]
-						.ConstructorStandings.length;
-					i++
-				) {
+				document.querySelector(".constructor-standings-points").innerHTML = "";
+				for (let i = 0; i < data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.length; i++) {
 					//shows constructor standings
-					const constructorStanding = document.querySelector(
-						".constructor-standings"
-					);
-					const constructorStandingDiv =
-						document.createElement("div");
+					const constructorStanding = document.querySelector(".constructor-standings");
+					const constructorStandingDiv = document.createElement("div");
 					constructorStandingDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[i].Constructor.name}`;
 					constructorStanding.appendChild(constructorStandingDiv);
 
 					//shows constructor points
-					const constructorStandingPoints = document.querySelector(
-						".constructor-standings-points"
-					);
-					const constructorStandingPointsDiv =
-						document.createElement("div");
+					const constructorStandingPoints = document.querySelector(".constructor-standings-points");
+					const constructorStandingPointsDiv = document.createElement("div");
 					constructorStandingPointsDiv.innerHTML = `${data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[i].points}`;
-					constructorStandingPoints.appendChild(
-						constructorStandingPointsDiv
-					);
+					constructorStandingPoints.appendChild(constructorStandingPointsDiv);
 				}
 			})
 			.catch((err) => {
@@ -192,64 +163,38 @@ function getRace(e) {
 			document.querySelector(".driver-race-points").innerHTML = "";
 			document.querySelector(".driver-race-constructor").innerHTML = "";
 			document.querySelector(".driver-race-time").innerHTML = "";
-			// document.querySelector(".constructor-race-results").innerHTML = "";
 
 			//show circuit layout
 			console.log(data.MRData.RaceTable.Races[0].Circuit.circuitId);
 			const circuit = document.querySelector(".circuit-layout");
 			circuit.src = `/img/${data.MRData.RaceTable.Races[0].Circuit.circuitId}.png`;
 
-			for (
-				i = 0;
-				i < data.MRData.RaceTable.Races[0].Results.length;
-				i++
-			) {
+			for (i = 0; i < data.MRData.RaceTable.Races[0].Results.length; i++) {
 				//shows driver race standing
-				const driverRaceStandings = document.querySelector(
-					".driver-race-standings"
-				);
+				const driverRaceStandings = document.querySelector(".driver-race-standings");
 				const driverRaceStandingsDiv = document.createElement("div");
 				driverRaceStandingsDiv.innerHTML =
 					`${data.MRData.RaceTable.Races[0].Results[i].Driver.givenName} ` +
 					`${data.MRData.RaceTable.Races[0].Results[i].Driver.familyName}`;
 				driverRaceStandings.appendChild(driverRaceStandingsDiv);
 				//shows driver constructor
-				const driverConstructor = document.querySelector(
-					".driver-race-constructor"
-				);
+				const driverConstructor = document.querySelector(".driver-race-constructor");
 				const driverConstructorDiv = document.createElement("div");
-				driverConstructorDiv.innerHTML =
-					data.MRData.RaceTable.Races[0].Results[i].Constructor.name;
+				driverConstructorDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].Constructor.name;
 				driverConstructor.appendChild(driverConstructorDiv);
 
 				//shows driver race points
-				const driverRacePoints = document.querySelector(
-					".driver-race-points"
-				);
+				const driverRacePoints = document.querySelector(".driver-race-points");
 				const driverRacePointsDiv = document.createElement("div");
 				driverRacePointsDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].points} PTS`;
 				driverRacePoints.appendChild(driverRacePointsDiv);
 
 				//show driver time
-				const driverRaceTime =
-					document.querySelector(".driver-race-time");
+				const driverRaceTime = document.querySelector(".driver-race-time");
 				const driverRaceTimeDiv = document.createElement("div");
-				// driverRaceTimeDiv.innerHTML =
-				// 	data.MRData.RaceTable.Races[0].Results[i].Time.time;
-
-				if (
-					(driverRaceTimeDiv.innerHTML =
-						data.MRData.RaceTable.Races[0].Results[
-							i
-						].hasOwnProperty("Time"))
-				) {
-					driverRaceTimeDiv.innerHTML =
-						data.MRData.RaceTable.Races[0].Results[i].Time.time;
-				} else if (
-					data.MRData.RaceTable.Races[0].Results[i].status.includes(
-						"Lap"
-					)
-				) {
+				if ((driverRaceTimeDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].hasOwnProperty("Time"))) {
+					driverRaceTimeDiv.innerHTML = data.MRData.RaceTable.Races[0].Results[i].Time.time;
+				} else if (data.MRData.RaceTable.Races[0].Results[i].status.includes("Lap")) {
 					// driverRaceTimeDiv.innerHTML = 'DNF'
 					driverRaceTimeDiv.innerHTML = `${data.MRData.RaceTable.Races[0].Results[i].status}`;
 				} else {
@@ -264,3 +209,7 @@ function getRace(e) {
 // 		modal.style.display = "none";
 // 	}
 // };
+const button = document.querySelector(".close-modal");
+button.onclick = function () {
+	modal.style.display = "none";
+};

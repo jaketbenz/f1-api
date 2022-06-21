@@ -33,6 +33,7 @@ body {
 	align-items: center;
 }
 .container {
+	height: 80%;
 	width: 90%;
 	margin-top: 5rem;
 	border-radius: 1rem;
@@ -116,21 +117,17 @@ body {
 	text-align: center;
 }
 .modal {
-	height: 90%;
+	height: 80%;
 	width: 90%;
 	position: absolute;
 	z-index: 1;
 	top: 10rem;
-	/* margin: auto; */
 	display: flex;
 	flex-wrap: wrap;
+	border-radius: 1rem;
 	background-color: white;
-	/* align-items:flex-start; */
-	/* background-color: rgba(0,0,0,0.4); */
-
-	/* justify-self: center;
-	justify-content: center;
-	justify-items: center; */
+	align-items:flex-start;
+	align-content: flex-start;
 }
 .modal-title-bar {
 	height: 10%;
@@ -243,6 +240,11 @@ body {
 	justify-content: center;
 	justify-items: center;
 	justify-self: center;
+}
+.close-modal{
+	height: 2.5%;
+	width: 10%;
+	margin: 2rem auto;
 }
 /******************************************
 /* ADDITIONAL STYLES
